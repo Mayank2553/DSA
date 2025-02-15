@@ -16,15 +16,15 @@ public:
         
         
         unordered_map<int, int> prefixSum;
-        prefixSum[0] = 1;
+        prefixSum[0] = 1;  //Base Case: A subarray sum starting at index 0
         int sum = 0, count = 0;
         for(int num: nums){
-            sum += num;
+            sum += num;  //Compute running sum
 
             if(prefixSum.find(sum - k) != prefixSum.end()){
-                count += prefixSum[sum-k];
+                count += prefixSum[sum-k]; //Add all occurences of (sum - k)
             }
-            prefixSum[sum]++;
+            prefixSum[sum]++;   //Store the current sum in map
         }
         return count;
     }

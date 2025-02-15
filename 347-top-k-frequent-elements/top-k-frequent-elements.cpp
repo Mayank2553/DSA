@@ -4,7 +4,7 @@ public:
         int n = nums.size();
 
         unordered_map<int, int> m;
-        vector<int> ans;
+        
         for (int i : nums) m[i]++;
 
 
@@ -13,7 +13,7 @@ public:
             return a.second > b.second;
         });
 
-
+        vector<int> ans;
         for(auto i=0; i<k; i++){
             ans.push_back(vec[i].first);
         }

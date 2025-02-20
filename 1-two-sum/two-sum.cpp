@@ -1,16 +1,17 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        //1. Brute Force
+        vector<int> ans;
         int n = nums.size();
-        unordered_map<int, int> m;
         for(int i=0; i<n; i++){
-            int diff = target - nums[i];
-            if(m.find(diff) != m.end()){
-                return {i, m[diff]};
+            for(int j=i+1; j<n; j++){
+                if(nums[i] + nums[j] == target){
+                    ans.push_back(i);
+                    ans.push_back(j);
+                }
             }
-
-            m[nums[i]] = i;
         }
-        return {};
+        return ans;
     }
 };

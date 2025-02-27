@@ -12,22 +12,22 @@ public:
 
     int climbStairs(int n) {
         
-        vector<int> memo(n+1, -1);
-        return climbHelper(n, memo);
+        // vector<int> memo(n+1, -1);
+        // return climbHelper(n, memo);
 
-        // if(n==0){
-        //     return 0;
-        // }
-        // if(n==1){
-        //     return 1;
-        // }
-        // int ans = 0, s1 = 0, s2 = 1;
-        // for(int i=1; i<=n; i++){
-        //     ans = s1+s2;
-        //     s1 = s2;
-        //     s2 = ans;
-        // }
-        // return ans;
+        if(n==0){
+            return 0;
+        }
+        if(n==1){
+            return 1;
+        }
+        int ans = 0, s1 = 0, s2 = 1;
+        for(int i=1; i<=n; i++){
+            ans = s1+s2;
+            s1 = s2;
+            s2 = ans;
+        }
+        return ans;
 
     }
 };

@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        //Vector based node value changing
+        //0. Brute Force - Vector based node value changing
         // vector<int> ans;
         // ListNode * temp = head;
         // while(temp){
@@ -28,16 +28,25 @@ public:
         // }
         // return head;
 
-        //changing pointers
-        ListNode* curr = head, *prev = NULL, *future = NULL;
-        while(curr){
-            future = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = future;
+        //1. Iterative - changing pointers
+        // ListNode* curr = head, *prev = NULL, *future = NULL;
+        // while(curr){
+        //     future = curr->next;
+        //     curr->next = prev;
+        //     prev = curr;
+        //     curr = future;
+        // }
+        // head = prev;
+        // return head;
+
+        //2. Recursive
+        if(head == NULL || head->next == NULL){
+            return head;
         }
-        // first->next = NULL;
-        head = prev;
-        return head;
+        ListNode* newHead = reverseList(head->next);
+        ListNode* front = head->next;
+        front->next = head;
+        head->next = NULL;
+        return newHead;
     }
 };

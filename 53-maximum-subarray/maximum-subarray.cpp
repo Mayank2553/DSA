@@ -1,22 +1,13 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        //1. Brute Force Approach
-
-        //2. Better Approach
         int n = nums.size();
-        int maxSum = INT_MIN, currentSum = 0;
+        int sum = 0, result = INT_MIN;
         for(int i=0; i<n; i++){
-            currentSum += nums[i];
-
-            if(currentSum > maxSum){
-                maxSum = currentSum;
-            }
-
-            if(currentSum < 0){
-                currentSum = 0;
-            }
+            if(sum < 0) sum = 0;
+            sum += nums[i];
+            result = max(sum, result);
         }
-        return maxSum;
+        return result;
     }
 };
